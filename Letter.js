@@ -25,13 +25,6 @@ function Letter(character) {
 
                     this.letterGuessed = true;
 
-                    return console.log(this.character);
-
-                }
-
-                else {
-
-                    return console.log("_");
                 }
 
             })
@@ -41,7 +34,25 @@ function Letter(character) {
 
     checkLetter();
 
+    this.showLetter = function () {
+
+        if (this.letterGuessed === true) {
+
+            return console.log(this.character);
+
+        }
+
+        else {
+
+            return console.log("_");
+        }
+    };
+
+  
+
 
 };
 
 Letter("a");
+
+module.exports = Letter;
