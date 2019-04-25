@@ -1,31 +1,47 @@
-function Letter() {
+const inquirer = require("inquirer");
 
-    this.character = "";
-    
+
+function Letter(character) {
+
+
+    this.character = character;
+
     this.letterGuessed = false;
-    
-    this.showLetter = function() {
 
-        if (this.letterGuessed === true) {
+    this.checkLetter = function () {
 
-            return this.character;
-        } else {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "letter",
+                    message: "Guess a letter!"
+                }
+            ])
+            .then(answers => {
+                let guessedLetter = answers.letter;
 
-            return "_";
-        }
+                if (guessedLetter === this.character) {
+
+                    this.letterGuessed = true;
+
+                    return console.log(this.character);
+
+                }
+
+                else {
+
+                    return console.log("_");
+                }
+
+            })
+
+
     };
 
-    this.checkLetter = function(guessedLetter) {
-
-        if (guessedLetter === this.character) {
-
-            this.letterGuessed = true;
+    checkLetter();
 
 
-        }
+};
 
-
-    }
-
-
-}
+Letter("a");
